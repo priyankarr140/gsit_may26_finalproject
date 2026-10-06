@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-10-06T20:58:45 IST" name="Surefire suite" finished-at="2026-10-06T21:01:25 IST" duration-ms="159677">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumberOptions.TestRunner@5c30a9b0]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2026-10-06T20:58:45 IST" name="Surefire test" finished-at="2026-10-06T21:01:25 IST" duration-ms="159677">
+      <class name="cucumberOptions.TestRunner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:cucumberOptions.TestRunner@5c30a9b0]" started-at="2026-10-06T20:58:45 IST" name="setUpClass" finished-at="2026-10-06T20:58:45 IST" duration-ms="253" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@1c504e66]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumberOptions.TestRunner@5c30a9b0]" started-at="2026-10-06T20:58:45 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-10-06T20:59:39 IST" duration-ms="54285" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Validating price by filter"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Validating price by filter functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumberOptions.TestRunner@5c30a9b0]" started-at="2026-10-06T20:59:39 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-10-06T21:00:32 IST" duration-ms="52649" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Validating price by filter"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Validating price by filter functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumberOptions.TestRunner@5c30a9b0]" started-at="2026-10-06T21:00:32 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-10-06T21:01:24 IST" duration-ms="52429" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Validating price by filter"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Validating price by filter functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:cucumberOptions.TestRunner@5c30a9b0]" started-at="2026-10-06T21:01:24 IST" name="tearDownClass" finished-at="2026-10-06T21:01:25 IST" duration-ms="13" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- cucumberOptions.TestRunner -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>
