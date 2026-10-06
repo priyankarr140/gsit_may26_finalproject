@@ -4,7 +4,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(features = { "src//test//resources//features" }, 
 glue = { "stepDefinations"},
-tags= "@filterByPrice",
+tags= "@addCart",
 dryRun=false
 )
 public class TestRunner extends AbstractTestNGCucumberTests{

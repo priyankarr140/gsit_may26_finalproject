@@ -42,12 +42,11 @@ public class B_validateFilterByPriceStep {
 	}
 	@Then("price is validated")
 	public void price_is_validated() {
-	/*	try 
-		{
+	
 			System.out.print(flowerList.size()+"***SIZE");		
 			for(int i=1;i<=flowerList.size();i++)
 		    {	   
-		     String text=getDriver()
+		     String text=driver
 		     .findElement
 		     (By.xpath("(//p[contains(@data-testid,'flower-price')])["+i+"]"))
 		    	 .getText();
@@ -85,13 +84,6 @@ public class B_validateFilterByPriceStep {
 		   // Thread.sleep(3000);
 		  //  System.out.println("URL last"+getDriver().getCurrentUrl());
 
-		}
-		catch(Exception ex)
-		{
-			System.out.println(ex.getMessage());
-			//logger.debug("Exception occurred:"+ex.getMessage());
-		}
-	   */
 	}
 
 }
