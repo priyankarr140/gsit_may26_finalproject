@@ -5,36 +5,51 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.openqa.selenium.chrome.*;
 import java.util.*;
-
+import base.*;
 import io.cucumber.java.en.*;
 
-public class B_validateFilterByPriceStep {
-	WebDriver driver;
+public class B_validateFilterByPriceStep extends Base {
+	//WebDriver driver;
     String inputRange;
     List<WebElement>flowerList;
 	@Given("user is on search screen and in stock is checked")
-	public void user_is_on_search_screen_and_in_stock_is_checked() throws Exception{
-	driver=new ChromeDriver();
-	Thread.sleep(3000);
-	driver.get("https://www.engineerdiaries.com/ui-framework");
-	Thread.sleep(3000);
-    driver.findElement(By.xpath("//*[@type='checkbox']")).click();
-	Thread.sleep(3000);
+	public void user_is_on_search_screen_and_in_stock_is_checked(){
+		try {
+			Thread.sleep(3000);
+			getDriver().get("https://www.engineerdiaries.com/ui-framework");
+			Thread.sleep(3000);
+			getDriver().findElement(By.xpath("//*[@type='checkbox']")).click();
+			Thread.sleep(3000);
+		}
+		catch(Exception ex)
+		{
+			log.error("Exception occurred:"+ex.getMessage());
+
+		}
+	//driver=new ChromeDriver();
+	
 		
 	    
 	}
 	@When("Range {string} is selected")
-	public void range_is_selected(String range) throws Exception{
-	 
-			//priceFilterPage = new PriceFilterPage(getDriver()); 
-			   WebElement filterByPrice=driver.findElement(By.tagName("select"));		
-			    inputRange=range;
-			    Select selectFilter=new Select(filterByPrice);
-			    selectFilter.selectByContainsVisibleText(inputRange);
-			    Thread.sleep(3000);
-			    flowerList=driver.findElements(By.className("hover:shadow-lg"));
-			    		//priceFilterPage.getItemCard();
-			    System.out.println("size:"+flowerList.size());
+	public void range_is_selected(String range) {
+	 try {
+		//priceFilterPage = new PriceFilterPage(getDriver()); 
+		   WebElement filterByPrice=getDriver().findElement(By.tagName("select"));		
+		    inputRange=range;
+		    Select selectFilter=new Select(filterByPrice);
+		    selectFilter.selectByContainsVisibleText(inputRange);
+		    Thread.sleep(3000);
+		    flowerList=getDriver().findElements(By.className("hover:shadow-lg"));
+		    		//priceFilterPage.getItemCard();
+		    System.out.println("size:"+flowerList.size()); 
+	 }
+	 catch(Exception ex)
+	 {
+			log.error("Exception occurred:"+ex.getMessage());
+
+	 }
+			
 			    		
 			
 		
@@ -42,11 +57,11 @@ public class B_validateFilterByPriceStep {
 	}
 	@Then("price is validated")
 	public void price_is_validated() {
-	
+		try {
 			System.out.print(flowerList.size()+"***SIZE");		
 			for(int i=1;i<=flowerList.size();i++)
 		    {	   
-		     String text=driver
+		     String text=getDriver()
 		     .findElement
 		     (By.xpath("(//p[contains(@data-testid,'flower-price')])["+i+"]"))
 		    	 .getText();
@@ -84,6 +99,14 @@ public class B_validateFilterByPriceStep {
 		   // Thread.sleep(3000);
 		  //  System.out.println("URL last"+getDriver().getCurrentUrl());
 
+		}
+		catch(Exception ex)
+		{
+			log.error("Exception occurred:"+ex.getMessage());
+
+		}
+	
+			
 	}
 
 }
