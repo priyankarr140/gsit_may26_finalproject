@@ -1,5 +1,7 @@
 package stepDefinations;
 import org.openqa.selenium.By;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -10,15 +12,19 @@ import io.cucumber.java.en.*;
 
 public class B_validateFilterByPriceStep extends Base {
 	//WebDriver driver;
+	private static final Logger log =
+			LogManager.getLogger(B_validateFilterByPriceStep.class);
     String inputRange;
     List<WebElement>flowerList;
 	@Given("user is on search screen and in stock is checked")
 	public void user_is_on_search_screen_and_in_stock_is_checked(){
 		try {
 			Thread.sleep(3000);
-			getDriver().get("https://www.engineerdiaries.com/ui-framework");
+			getDriver().get(this.getData("frameworkUrl"));
+			log.debug("Framework url launched");
 			Thread.sleep(3000);
 			getDriver().findElement(By.xpath("//*[@type='checkbox']")).click();
+			log.debug("checkbox clicked");
 			Thread.sleep(3000);
 		}
 		catch(Exception ex)
@@ -40,6 +46,7 @@ public class B_validateFilterByPriceStep extends Base {
 		    Select selectFilter=new Select(filterByPrice);
 		    selectFilter.selectByContainsVisibleText(inputRange);
 		    Thread.sleep(3000);
+		    log.debug("Range:"+inputRange+" selected");
 		    flowerList=getDriver().findElements(By.className("hover:shadow-lg"));
 		    		//priceFilterPage.getItemCard();
 		    System.out.println("size:"+flowerList.size()); 
@@ -95,7 +102,7 @@ public class B_validateFilterByPriceStep extends Base {
 		        // Extract number		     
 		    }
 			System.out.println("PRICE FILTER FOR "+inputRange+" is working");
-		  //  logger.debug("PRICE FILTER FOR "+inputRange+" is working");
+		    log.debug("PRICE FILTER FOR "+inputRange+" is working");
 		   // Thread.sleep(3000);
 		  //  System.out.println("URL last"+getDriver().getCurrentUrl());
 

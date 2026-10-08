@@ -1,0 +1,5 @@
+21:38:22.262 [main] DEBUG stepDefinations.A_validateLoginFunctionalityStep - url launched
+21:38:25.428 [main] DEBUG stepDefinations.A_validateLoginFunctionalityStep - browser got maximized
+21:38:31.720 [main] DEBUG stepDefinations.A_validateLoginFunctionalityStep - Signup button got clicked
+21:38:34.816 [main] DEBUG stepDefinations.A_validateLoginFunctionalityStep - login tab got clicked
+21:38:38.136 [main] DEBUG stepDefinations.A_validateLoginFunctionalityStep - Email entered:priyankauser@gmail.com

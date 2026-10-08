@@ -1,4 +1,5 @@
 package stepDefinations;
+import pageObjects.LoginPage;
 import org.testng.Assert;
 import base.Base;
 
@@ -10,6 +11,7 @@ import org.openqa.selenium.chrome.*;
 import io.cucumber.java.en.*;
 public class A_validateLoginFunctionalityStep extends Base {
 	//WebDriver driver;
+	LoginPage loginPage;
 	private static final Logger log =
 			LogManager.getLogger(A_validateLoginFunctionalityStep.class);
 
@@ -18,7 +20,8 @@ public class A_validateLoginFunctionalityStep extends Base {
 		try {
 			
 			Thread.sleep(5000);		
-			getDriver().get("https://www.engineerdiaries.com/");
+			log.debug("url value:"+this.getData("url"));
+			getDriver().get(this.getData("url"));
 			log.debug("url launched");
 			Thread.sleep(3000);
 			getDriver().manage().window().maximize();
@@ -36,11 +39,14 @@ public class A_validateLoginFunctionalityStep extends Base {
 	public void clicks_login()  {	
 		try {
 		 Thread.sleep(3000); 
-		 getDriver().findElement(By.xpath("//*[text()='Sign In / Sign Up']")).click();
+		 loginPage=new LoginPage(getDriver());
+		 loginPage.getSignUpAndInBtn().click();
+		// getDriver().findElement(By.xpath("//*[text()='Sign In / Sign Up']")).click();
 			log.debug("Signup button got clicked");
 		 
 		  Thread.sleep(3000);
-		  getDriver().findElement(By.xpath("//*[text()='Login']")).click();	
+		  loginPage.getSignInBtn().click();
+		 // getDriver().findElement(By.xpath("//*[text()='Login']")).click();	
 			log.debug("login tab got clicked");
 		  Thread.sleep(3000);	
 		}
@@ -54,11 +60,14 @@ public class A_validateLoginFunctionalityStep extends Base {
 	
 	{
 		try {
-		getDriver().findElement(By.id("input-Email")).sendKeys(email);
+			loginPage.getEmail().sendKeys(email);
+		//getDriver().findElement(By.id("input-Email")).sendKeys(email);
 		log.debug("Email entered:"+email);
 
 		Thread.sleep(3000);
-		getDriver().findElement(By.id("input-Password")).sendKeys(password);
+		loginPage.getPassword().sendKeys(password);
+
+		//getDriver().findElement(By.id("input-Password")).sendKeys(password);
 		log.debug("Password entered:"+password);
 
 		 Thread.sleep(3000);
@@ -75,13 +84,14 @@ public class A_validateLoginFunctionalityStep extends Base {
 	public void user_is_sucessfully_logged_in() {
 		try {
 		Thread.sleep(2000);
-		getDriver().findElement(By.xpath("//*[@type='submit']")).click();		
+		loginPage.getSubmitBtn().click();
+	//	getDriver().findElement(By.xpath("//*[@type='submit']")).click();		
 		log.debug("Submit button got clicked");
 
 	    Thread.sleep(2000);
-	    String loginText=
-	    		getDriver().findElement(By.xpath("(//div[@class='relative'])[3]"))
-	    		.getText();
+	    String loginText=loginPage.getLoginText().getText();
+	    		//getDriver().findElement(By.xpath("(//div[@class='relative'])[3]"))
+	    		
 		  Assert.assertTrue(loginText.contains("Hi"),"Login failure"); 
 			log.debug("User is logged in successfully");
 
