@@ -1,6 +1,10 @@
 package hooks;
 import io.cucumber.java.*;
+import io.qameta.allure.Allure;
 import base.Base;
+
+import java.io.ByteArrayInputStream;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.*;
@@ -33,8 +37,13 @@ public class ScenarioHook extends Base{
 	}
 	
 	@After
-	public void tearDown()
+	public void tearDown(Scenario scenario)
 	{
+		  if (!scenario.isFailed())
+		  { byte[] screenshotBytes = ((TakesScreenshot)
+				  getDriver()).getScreenshotAs(OutputType.BYTES);
+				  
+		Allure.addAttachment( "Screenshot", new ByteArrayInputStream(screenshotBytes) ); }
 		getDriver().quit();
 	}
 

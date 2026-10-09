@@ -20,7 +20,7 @@ public class CartPage {
 
 	
 
-	public WebElement getClearFilter(WebDriver driver) {
+	public WebElement getClearFilter() {
 		return driver.findElement(this.clearFilter);
 	}
 

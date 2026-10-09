@@ -1,3 +1,4 @@
-21:38:41.263 [main] DEBUG stepDefinations.A_validateLoginFunctionalityStep - Password entered:Priyanka@1
-21:38:46.388 [main] DEBUG stepDefinations.A_validateLoginFunctionalityStep - Submit button got clicked
-21:38:48.468 [main] DEBUG stepDefinations.A_validateLoginFunctionalityStep - User is logged in successfully
+21:37:17.992 [main] DEBUG stepDefinations.A_validateLoginFunctionalityStep - Email entered:priyankauser@gmail.com
+21:37:21.085 [main] DEBUG stepDefinations.A_validateLoginFunctionalityStep - Password entered:Priyanka@1
+21:37:26.165 [main] DEBUG stepDefinations.A_validateLoginFunctionalityStep - Submit button got clicked
+21:37:28.192 [main] DEBUG stepDefinations.A_validateLoginFunctionalityStep - User is logged in successfully

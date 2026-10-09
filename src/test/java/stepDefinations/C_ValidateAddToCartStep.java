@@ -1,4 +1,5 @@
 package stepDefinations;
+import pageObjects.CartPage;
 import org.testng.Assert;
 
 import io.cucumber.java.en.*;
@@ -9,6 +10,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.*;
 import base.*;
 public class C_ValidateAddToCartStep extends Base {
+	CartPage cartPage;
 	private static final Logger log =
 			LogManager.getLogger(C_ValidateAddToCartStep.class);
 //	WebDriver driver;
@@ -24,12 +26,13 @@ public class C_ValidateAddToCartStep extends Base {
 			log.debug("framework url launched");
 			getDriver().get(this.getData("frameworkUrl"));
     			log.debug("framework url launched");
-
     	        //Thread.sleep(5000);
     	        System.out.println("REACHED CART");
     	        //System.out.println(driver.getCurrentUrl());
     	 		Thread.sleep(3000);
-    	 	   getDriver().findElement(By.xpath("//*[text()='Clear Filters']")).click();
+    	 		cartPage=new CartPage(getDriver());
+    	 		cartPage.getClearFilter().click();
+    	 	 //  getDriver().findElement(By.xpath("//*[text()='Clear Filters']")).click();
    			log.debug("clear filter has been applied");
 
 		   // Thread.sleep(3000);
@@ -49,14 +52,16 @@ public class C_ValidateAddToCartStep extends Base {
 			userFlower=flower;
 			userQuantity=quantity;
 			//   System.out.println("REACHED METHOD2"+flower);
-			   getDriver().findElement(By.xpath("//input[@data-testid='search-input']"))
-		    .sendKeys(flower);
+			this.cartPage.getInputSearch().sendKeys(flower);
+			 //  getDriver().findElement(By.xpath("//input[@data-testid='search-input']"))
+		 
 				log.debug("input:"+flower+" has been provided");
 
 		   Thread.sleep(3000);
 		    for(int i=1;i<=Integer.parseInt(quantity);i++)
 		    {
-		    	   getDriver().findElement(By.xpath("//*[text()='Add to Cart']")).click();
+		    	this.cartPage.getAddToCardBtn().click();
+		    	 //  getDriver().findElement(By.xpath("//*[text()='Add to Cart']")).click();
 		    		Thread.sleep(3000);
 		    }	
 			log.debug("quantity:"+userQuantity+" has been provided");
@@ -75,9 +80,11 @@ public class C_ValidateAddToCartStep extends Base {
 	@Then("validate correct item is added")
 	public void validate_correct_item_is_added() {
 		try {
-			getDriver().findElement(By.xpath("//*[@data-testid='toggle-cart']")).click();
+			this.cartPage.getCartBtn().click();
+		//	getDriver().findElement(By.xpath("//*[@data-testid='toggle-cart']")).click();
 		    Thread.sleep(3000);
-		   String flower=    getDriver().findElement(By.xpath("//p[@class='font-semibold']")).getText();
+		   String flower=this.cartPage.getItemName().getText();
+				 //  getDriver().findElement(By.xpath("//p[@class='font-semibold']")).getText();
 		    System.out.println("FLOWER:"+flower);
 		    Assert.assertTrue(flower.equals(userFlower));
 		    log.debug("correct item has been added");
@@ -94,8 +101,9 @@ public class C_ValidateAddToCartStep extends Base {
 	public void validate_correct_item_quantity(){
 		try {
 			Thread.sleep(3000);
-			 String quantity=    getDriver().findElement
-					 (By.className("text-gray-600")).getText();
+			 String quantity=  this.cartPage.getItemQuantity().getText(); 
+					 //getDriver().findElement
+					 //(By.className("text-gray-600")).getText();
 
 			    quantity=quantity.replaceAll("x","");
 			    System.out.println(quantity);

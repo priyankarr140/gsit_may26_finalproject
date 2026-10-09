@@ -1,4 +1,5 @@
 package stepDefinations;
+import pageObjects.PriceFilterPage;
 import org.openqa.selenium.By;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,6 +13,7 @@ import io.cucumber.java.en.*;
 
 public class B_validateFilterByPriceStep extends Base {
 	//WebDriver driver;
+	PriceFilterPage priceFilterPage;
 	private static final Logger log =
 			LogManager.getLogger(B_validateFilterByPriceStep.class);
     String inputRange;
@@ -23,7 +25,9 @@ public class B_validateFilterByPriceStep extends Base {
 			getDriver().get(this.getData("frameworkUrl"));
 			log.debug("Framework url launched");
 			Thread.sleep(3000);
-			getDriver().findElement(By.xpath("//*[@type='checkbox']")).click();
+			priceFilterPage=new PriceFilterPage(getDriver());
+			priceFilterPage.getInStockCheckbox().click();
+		//	getDriver().findElement(By.xpath("//*[@type='checkbox']")).click();
 			log.debug("checkbox clicked");
 			Thread.sleep(3000);
 		}
@@ -41,13 +45,15 @@ public class B_validateFilterByPriceStep extends Base {
 	public void range_is_selected(String range) {
 	 try {
 		//priceFilterPage = new PriceFilterPage(getDriver()); 
-		   WebElement filterByPrice=getDriver().findElement(By.tagName("select"));		
+		   WebElement filterByPrice=priceFilterPage.getPriceFilter();
+				   //getDriver().findElement(By.tagName("select"));		
 		    inputRange=range;
 		    Select selectFilter=new Select(filterByPrice);
 		    selectFilter.selectByContainsVisibleText(inputRange);
 		    Thread.sleep(3000);
 		    log.debug("Range:"+inputRange+" selected");
-		    flowerList=getDriver().findElements(By.className("hover:shadow-lg"));
+		    flowerList=priceFilterPage.getItemCard();
+		    		//getDriver().findElements(By.className("hover:shadow-lg"));
 		    		//priceFilterPage.getItemCard();
 		    System.out.println("size:"+flowerList.size()); 
 	 }
